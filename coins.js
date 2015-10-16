@@ -33,23 +33,19 @@ function coinCounter (dollars) {
 
  	quarterDec = dollars/(.25);
     numQuarters = Math.floor(quarterDec);
- 	console.log("num of Quarters", numQuarters);
  	numQuartersVal = numQuarters * .25;
 
  	dimeDec = (dollars - numQuartersVal)/.10;
  	numDimes = Math.floor(dimeDec);
- 	console.log("num of dimes", numDimes);
  	numDimesVal = numDimes * .10;
 
  	nickelDec = (dollars - (numDimesVal + numQuartersVal))/(.05);
     numNickel = Math.floor(nickelDec);
- 	console.log("num of Nickel", numNickel);
  	numNickelVal = numNickel * .05;
 
  	penneyDec = (dollars - (numDimesVal + numQuartersVal + numNickelVal))/.01;
  	numPenney = Math.floor(penneyDec)
- 	console.log("num of Penneys	", numPenney);
-
+ 
 	coinPurse.quarters = numQuarters;
 	coinPurse.dimes = numDimes;
 	coinPurse.nickels = numNickel;
