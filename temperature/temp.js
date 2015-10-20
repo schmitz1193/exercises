@@ -38,49 +38,78 @@ var conversion = "";
 
 var textColor = "";
 
+var tempConvertSelect = "";
+
+//////Set up cnverter switch
+
+document.getElementById("celsius").addEventListener("click", function() {
+  tempConvertSelect = "C";
+});
+document.getElementById("fahrenheit").addEventListener("click", function() {
+  tempConvertSelect = "F";
+});
+
 ///// function to convert entered temp to Celsius
 function toCelsius(tempToConvert) {
   conversion = (tempToConvert * (9 / 5)) + 32;
-  conversion = Math.round(conversion);
-  return conversion;  
+  conversion = Math.round(conversion); 
+  outConvert.innerHTML = conversion + "&deg; F";
+  if (conversion < 32) {
+     outConvert.classList.add("blue");
+  }
+  if (conversion > 32) {
+    outConvert.classList.add("red");
+    console.log("class", placeWhereTempGoes.classList);
+  }
+  if (conversion >= 0 && fahrenheit <= 32) {
+    outConvert.classList.add("green");
+    console.log("class is", outConvert.classList);
+  }
+  return outConvert.innerHTML;  
 }
 ///// function to convert entered temp to Fahrenheit
-function toFahrenheit(tempToConvert) {
+function toFahrenheit(tempToConvert) {  
   conversion = (tempToConvert - 32) * (5 / 9);
   conversion = Math.round(conversion);
-  return conversion;  
+  outConvert.innerHTML = conversion + "&deg; F";
+  if (conversion < 32) {
+     outConvert.classList.add("blue");
+  }
+  if (conversion > 90) {
+    outConvert.classList.add("red");
+  }
+  if (conversion >= 32 && fahrenheit <= 90) {
+    outConvert.classList.add("green");
+  }
+  console.log("class is", outConvert.classList);
+  return outConvert.innerHTML;  
 }
 
-temperature.addEventListener("click", function(event) {
-  if (temperature.value !== "") {
-    tempToConvert = parseInt(temperature.value);
-    console.log("temp to covert ", tempToConvert);
-  }
+
+// when convert button is pressed, convert text input to a number so the temp can be caculated.
+temperature.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    if (temperature.value !== "") {
+      tempToConvert = parseInt(temperature.value);
+      console.log("temp to covert ", tempToConvert);
+     }
+    if (tempConvertSelect === "C") {
+      toCelsius(tempToConvert);
+    }
+      else (toFahrenheit(tempToConvert));
+    }
 });
 
-//check to see if convert button has been clicked -- if clicked check for which converter button was clicked
-convert.addEventListener("click", function(event) {
-   document.getElementById("celsius").addEventListener("click", toCelsius);
-   document.getElementById("fahrenheit").addEventListener("click", toFahrenheit);  
-   if (conversion > 90) {
-     textColor = ".red";
-   }
-     else if (conversion < 32) {
-      textColor = ".blue";
-     }
-      else textColor = ".green";
-   outConvert.innerHTML = "Converted Temperature is: <p class='" + "textColor'>" + conversion + "</p>" ;
-   console.log("outconvert ", outConvert.innerHTML);
-});   
 
+//when the clear input is checked all the buttons return to an unchecked or blank value
 clearInput.addEventListener("click", function(event) {
   document.getElementById("celsius").checked = false;
   document.getElementById("fahrenheit").checked = false;
-  document.getElementById("clickToConvert").checked = false;
-  temperature.innerHTML = "";
+  convert.checked = false;
+  clearInput.checked = false;
+  temperature.value = "";
   outConvert.innerHTML = "";
-  conversion = 0;
-  return conversion;
+  temperature.innerHTML = "";
 });
 
 
