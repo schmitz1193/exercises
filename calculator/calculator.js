@@ -11,7 +11,7 @@
 function multiplier(inOne, inTwo) {
   product = inOne * inTwo;
   return product;
-}
+};
 
 /*
   Create a function that adds two numbers
@@ -20,7 +20,7 @@ function multiplier(inOne, inTwo) {
  function add(inOne, inTwo) {
   sum = inOne + inTwo;
   return sum;
- }
+ };
 
 /*
   Create a function that subtracts two numbers
@@ -30,7 +30,7 @@ function multiplier(inOne, inTwo) {
  function subtract(inOne, inTwo) {
    difference = inOne - inTwo;
    return difference
- }
+ };
 
 
 /*
@@ -40,7 +40,7 @@ function multiplier(inOne, inTwo) {
 function divide(inOne, inTwo) {
    quotient = inOne/inTwo;
    return quotient;
-}
+};
 
 
 /*
@@ -52,24 +52,37 @@ function divide(inOne, inTwo) {
   Return the value of the operation.
  */
 
-function calculations(inOne, inTwo, operation) {
-  return operation(inOne, inTwo);
-}
+//function calculations(inOne, inTwo, operation) {
+ // return operation(inOne, inTwo);
+//};
 
 /* get inputted number values and use parse to make them integers */
+var answer = document.getElementById("answer");
+var getSum = document.getElementById("add");
+var inOne = document.getElementById("in-one");
+var inTwo = document.getElementById("in-two");
+var result = "";
+
 
  
 /* Determine which box was checked, pass the input and call appropriate function */
 
-document.getElementById("add").addEventListener("click", function() {
-  var inOne = parseInt(document.getElementById("in-one").value);
-  var inTwo = parseInt(document.getElementById("in-two").value);
-console.log(inOne, inTwo);
-  var answer = calculations(inOne, inTwo, add);
-  return getElementById("answer").innerHTML = answer;
+getSum.addEventListener("click", function() {
+  inOne = parseInt(inOne.value);
+console.log(inOne); 
+
+  inTwo = parseInt(inTwo.value);
+console.log(inTwo);
+
+  var result = add(inOne, inTwo);
+console.log("result func", result);
+
+  answer.innerHTML = result;
+  
 });
 
-console.log("answer ", answer);
+
+
 
 
 
