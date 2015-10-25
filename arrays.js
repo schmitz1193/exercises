@@ -11,6 +11,7 @@
   without the need for a getElementById() and innerHTML.
 */
 
+
 console.log("I am here");
 
 function reversal(origString) {
