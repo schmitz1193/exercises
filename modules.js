@@ -39,25 +39,3 @@ var SolarSystem = (function() {
 
 console.log(SolarSystem);
 
-//////////Example from Curriculum
-
-var Sedan = (function() {
-  var color = "blue";
-  var type = "sedan";
-
-  return {
-    manufacture_date: new Date(),
-    getColor: function(color) {
-      return color;
-    },
-    setColor: function(newColor) {
-      color = newColor;
-    },
-    getType: function() {
-      return type;
-    }
-  };
-})();
-Sedan.type = "minivan"; 
-console.log(Sedan.getType());
-console.log(Sedan);
